@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./component/Header";
+import Sidebar from "./component/Sidebar";
+import Content from "./component/Content";
+import Footer from "./component/Footer";
+import Welcome from "./component/Welcome";
+
+import { headerTitle, sidebarTitle,footerTitle} from "./component/title";
+ 
+
+
+import "./App.css";
+import ClassComponent from "./component/ClassComponent";
 
 function App() {
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      
+      <Header title={headerTitle} />
+  
+      <div className="main-layout">
+        <Sidebar  title={sidebarTitle} />
+        <Content />
+      </div>
+      {/* <ClassComponent name='vivek'/> */}
+
+      <Footer  title={footerTitle} />
     </div>
   );
 }
