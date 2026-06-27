@@ -4,7 +4,8 @@ import Counter from "./Counter";
 import MyParagraph from "./MyParagraph";
 import Users from "./Users";
 import UserForm from "./UserForm";
- 
+import LoginStatus from "./LoginStatus";
+import Emodel from "./EModel";
  
 // React component needs data for dynamic contents
 // Declared Data
@@ -121,11 +122,14 @@ function Content() {
 
       <div className="card"> 
         
-        <UserForm/>
+        {/* <UserForm/> */}
 
         {/* <StudentDetails details={student_one} /> */}
        {/* <Counter/>  */}
-      
+     
+      <LoginStatus/>
+      {/* <Emodel/> */}
+
       {/* if(age >= 18){
         console.log("You are not a teen ager")
       } 

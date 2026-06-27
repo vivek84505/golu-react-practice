@@ -21,7 +21,7 @@ function UserForm() {
 
   const handleChange = (e) =>{ 
     
- 
+    
     const {name,value} = e.target //1000
  
         setFormData((prevData) => (

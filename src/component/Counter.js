@@ -52,6 +52,7 @@ function Counter() {
       <CounterShow counter={mycounter} />     
       <CounterAction  incrementCounter={increment} decrementCounter={decrement} />
       {(mycounter >= 18) ? (<h2>Adult</h2>) : (<h2>TeenAger</h2>)}
+      { mycounter % 2 === 0 ? (<h2>Even</h2>) : (<h2>Odd</h2>) }
      
        {/* state */}
        {/* props */}
