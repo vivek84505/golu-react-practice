@@ -6,6 +6,8 @@ import Users from "./Users";
 import UserForm from "./UserForm";
 import LoginStatus from "./LoginStatus";
 import Emodel from "./EModel";
+import CDatalist from "./CDatalist";
+import CUserList from "./CUserList";
  
 // React component needs data for dynamic contents
 // Declared Data
@@ -122,12 +124,13 @@ function Content() {
 
       <div className="card"> 
         
-        {/* <UserForm/> */}
+        <UserForm/>
 
         {/* <StudentDetails details={student_one} /> */}
        {/* <Counter/>  */}
-     
-      <LoginStatus/>
+       {/* <CDatalist/> */}
+      {/* <CUserList/> */}
+      {/* <LoginStatus/> */}
       {/* <Emodel/> */}
 
       {/* if(age >= 18){

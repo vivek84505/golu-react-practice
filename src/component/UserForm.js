@@ -7,8 +7,10 @@ function UserForm() {
     //  =>  Two way Data binding
     // Controled Component
     // Form handling + Validation
-    
+  const [users,setUsers] = useState([])  
+
   const [formData,setFormData] = useState({
+    id:"",
     name:"",
     email:"",
     mobile:""
@@ -80,11 +82,13 @@ function UserForm() {
      e.preventDefault();
      
      if(validateForm()){ 
-        setSubmittedData(formData)
-        console.log("Form Validated Submitting data to API=======>")
+       // setSubmittedData(formData)
+        console.log("Form Validated Submitting data to API=======>",formData)
+        formData.id = Math.floor(Math.random()  * 100) + 1
+        setUsers([...users,formData])
      }
      else{
-        setSubmittedData(null)
+        //setSubmittedData(null)
      }
     
 
@@ -176,7 +180,35 @@ function UserForm() {
             </div>
         )}
 
+        {/* user table */}
+        <div>
+          <h2> CUserList Demo</h2>
 
+                <table className="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((user)=>(
+                            <tr key={user.id}>
+                                <th scope="row">{user.id}</th>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.mobile}</td>
+                                 
+                            </tr>
+                    ))} 
+
+                </tbody>
+                </table>
+
+        </div>
     </div>
   );
 }
