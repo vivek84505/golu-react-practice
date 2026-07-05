@@ -1,18 +1,56 @@
- 
-function Sidebar(props) {
+import { NavLink } from "react-router-dom";
 
-   
-  //  console.log("Sidebar Component Rendered============>")
+function Sidebar(props) {
   return (
     <aside className="sidebar">
-      <h2>{props.title} </h2>
+      <h2>{props.title}</h2>
+
       <ul>
-        <li>Dashboard</li>
-        <li>Users</li>
-        <li>Products</li>
-        <li>Reports</li>
-        <li>Settings</li>
-        
+        <li>
+          <NavLink to="/">
+              Dashboard
+          </NavLink> 
+        </li>
+
+         <li>
+            <NavLink to="/careers">
+              Careers
+            </NavLink>
+        </li>
+
+        <li>
+            <NavLink to="/about">
+              About
+            </NavLink>
+        </li>
+
+
+         <li>
+            <NavLink to="/reports">
+              Reports
+            </NavLink>
+        </li>
+
+         <li>
+            <NavLink to="/services">
+              Services
+            </NavLink>
+        </li>
+
+         <li>
+            <NavLink to="/counter">
+              Counter
+            </NavLink>
+        </li>
+
+         <li>
+            <NavLink to="/user">
+              User
+            </NavLink>
+        </li>
+       
+
+         
       </ul>
     </aside>
   );
