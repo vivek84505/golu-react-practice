@@ -48,7 +48,11 @@ function Sidebar(props) {
               User
             </NavLink>
         </li>
-       
+       <li>
+          <NavLink to="/userlist">
+            User List
+          </NavLink>
+       </li>
 
          
       </ul>

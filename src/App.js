@@ -18,6 +18,9 @@ import Reports from "./component/pages/Reports";
 import Services from "./component/pages/Services";
 import Counter from "./component/Counter";
 import UserForm from "./component/UserForm";
+import NotFound from "./component/pages/NotFound";
+import UserList from "./component/pages/UserList";
+import UserDetails from "./component/pages/UserDetails";
  
 
 function App() {
@@ -49,7 +52,10 @@ function App() {
               <Route path="/services" element={<Services/>}/>
               <Route path="/counter" element={<Counter/>}/>
               <Route path="/user" element={<UserForm/>}/>
+              <Route path="/userlist" element={<UserList/>}/>
+              <Route path="/userdetails/:id" element={<UserDetails/>}/>
               <Route path= "*" element={<h1>404 Page Not Found</h1>}/>
+              <Route component={NotFound} />  
 
           </Routes>
         </div>
