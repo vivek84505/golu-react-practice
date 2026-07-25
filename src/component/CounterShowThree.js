@@ -1,7 +1,7 @@
 import Counter from "./Counter";
 import { useEffect } from "react";
 
-function CounterShow(props){
+function CounterShowThree(props){
  
 //   console.log("New updated value received 123============>",props.counter)
  
@@ -25,10 +25,10 @@ function CounterShow(props){
 
     return(
         <div>
-            <h2 className="counter-value"> Counter from Show 1 : {props.counter}</h2>
+            <h2 className="counter-value"> Counter from Show 3: {props.counter}</h2>
             
         </div>
     )
 }
 
-export default CounterShow;
+export default CounterShowThree;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 function HookDemo(){ 
-
+    
     //Created Phase = variable declaration , Function Declaration, setting initialization
     //Mounted => API Call, setting initialization, set Initial values
     //Updated => If any depdendency value changes then useEffect runs
@@ -31,26 +31,26 @@ function HookDemo(){
         setCounter2(counter - 1); 
     };
 
-     useEffect(() => {
+    //  useEffect(() => {
 
-        console.log("HookDemo Component Mounted ========>")
+    //     console.log("HookDemo Component Mounted ========>")
 
-        const timer = setInterval(() => {
-            setCounter((prev) => prev + 100000);
-             console.log("Timer Running ========>")
-        },1000)
-
-
-
-        //For Unmounting Phase Return function
-        return () => {
-            console.log("HookDemo Component Unmounted")
-            clearInterval(timer)
-            console.log("Timer Stopped")
-        }
+    //     const timer = setInterval(() => {
+    //         setCounter((prev) => prev + 100000);
+    //          console.log("Timer Running ========>")
+    //     },1000)
 
 
-    },[])
+
+    //     //For Unmounting Phase Return function
+    //     return () => {
+    //         console.log("HookDemo Component Unmounted")
+    //         clearInterval(timer)
+    //         console.log("Timer Stopped")
+    //     }
+
+
+    // },[])
 
 
     useEffect(() => {

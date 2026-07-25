@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import CounterShow from "./CounterShow";
+import CounterShowTwo from "./CounterShowTwo";
+import CounterShowThree from "./CounterShowThree";
 import CounterAction from "./CounterAction";
 import CounterDisplay from "./CounterDisplay";
+import Header from "./Header";
+
 
 function Counter() {
  
   const [mycounter, setCount] = useState(0);
-  
-  
- 
-
- 
 
   // useState ==> State variable declaration, initialization method mapping.
 
@@ -35,21 +34,18 @@ function Counter() {
    
   };
 
-  const decrement = (value) => {
-    // console.log("decrement function called ============>")
+  const decrement = (value) => {   
     setCount(mycounter - value);
-  //  mycounter = mycounter - value
-    // console.log("mycounter ============>",mycounter)
-
-
   };
 
-  // console.log("Counter Component Rendered============>")
-  // console.log("New updated value passsing============>",mycounter)
+ 
   
   return (
     <div className="counter-container">
       <CounterShow counter={mycounter} />     
+       <CounterShowTwo counter={mycounter} />     
+        <CounterShowThree counter={mycounter} />     
+        
       <CounterAction  incrementCounter={increment} decrementCounter={decrement} />
       {(mycounter >= 18) ? (<h2>Adult</h2>) : (<h2>TeenAger</h2>)}
       { mycounter % 2 === 0 ? (<h2>Even</h2>) : (<h2>Odd</h2>) }

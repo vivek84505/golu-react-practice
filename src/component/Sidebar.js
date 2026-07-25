@@ -60,6 +60,12 @@ function Sidebar(props) {
           </NavLink>
        </li>
 
+       <li>
+          <NavLink to="/contextdemo">
+            Context Demo
+          </NavLink>
+       </li>
+
          
       </ul>
     </aside>

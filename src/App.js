@@ -22,6 +22,7 @@ import NotFound from "./component/pages/NotFound";
 import UserList from "./component/pages/UserList";
 import UserDetails from "./component/pages/UserDetails";
 import HookDemo from "./component/pages/HookDemo";
+import ContextDemo from "./component/pages/ContextDemo";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
               <Route path="/userlist" element={<UserList/>}/>
               <Route path="/userdetails/:id" element={<UserDetails/>}/>
               <Route path="/hookdemo" element={<HookDemo/>}/>
+               <Route path="/contextdemo" element={<ContextDemo/>}/>
               <Route path= "*" element={<h1>404 Page Not Found</h1>}/>
               <Route component={NotFound} />  
 
