@@ -184,7 +184,7 @@ function UserForm() {
         <div>
           <h2> CUserList Demo</h2>
 
-                <table className="table">
+              <table className="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>

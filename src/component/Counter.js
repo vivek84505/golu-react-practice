@@ -46,7 +46,7 @@ function Counter() {
 
   // console.log("Counter Component Rendered============>")
   // console.log("New updated value passsing============>",mycounter)
-
+  
   return (
     <div className="counter-container">
       <CounterShow counter={mycounter} />     

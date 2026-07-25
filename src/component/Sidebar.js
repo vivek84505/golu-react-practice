@@ -54,6 +54,12 @@ function Sidebar(props) {
           </NavLink>
        </li>
 
+       <li>
+          <NavLink to="/hookdemo">
+            Hook Demo
+          </NavLink>
+       </li>
+
          
       </ul>
     </aside>

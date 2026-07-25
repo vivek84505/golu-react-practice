@@ -6,7 +6,10 @@ function UserDetails(){
 
     const {id} = useParams()
     
-    const [user,setUser] = useState(null)
+    const [user,setUser] = useState(null) 
+    //Purpose
+    //Syntax
+    //Usage
 
     useEffect(() => {
 

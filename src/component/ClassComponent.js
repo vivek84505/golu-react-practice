@@ -1,10 +1,13 @@
 import React, { Component } from 'react';  
+ 
   
 class ClassComponent extends React.Component {  
    constructor(props) {  
       super(props);  
       this.state = {hello: "JavaTpoint"};  
+      this.state = {counter: 0};  
       this.changeState = this.changeState.bind(this)  
+       
    }    
    render() {  
       return (  
@@ -23,6 +26,7 @@ class ClassComponent extends React.Component {
    
    changeState(){  
       this.setState({hello:"All!!- Its a great reactjs tutorial."});  
+      
    }  
     
    shouldComponentUpdate(newProps, newState) {  
