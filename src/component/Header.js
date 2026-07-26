@@ -12,11 +12,11 @@ function Header(props) {
     <header className="header">
        
       <h1>{props.title}</h1>
-      <h2>Current Theme : {theme} </h2>
+      {/* <h2>Current Theme : {theme} </h2>
 
        <button onClick={toggleTheme} className="btn btn-danger">
         Swith Theme
-        </button> 
+        </button>  */}
 
 
     </header>

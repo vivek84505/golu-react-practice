@@ -23,6 +23,8 @@ import UserList from "./component/pages/UserList";
 import UserDetails from "./component/pages/UserDetails";
 import HookDemo from "./component/pages/HookDemo";
 import ContextDemo from "./component/pages/ContextDemo";
+import Memoization from "./component/pages/Memoization";
+import CallbackDemo from "./component/pages/CallbackDemo";
 
 function App() {
 
@@ -57,6 +59,9 @@ function App() {
               <Route path="/userdetails/:id" element={<UserDetails/>}/>
               <Route path="/hookdemo" element={<HookDemo/>}/>
                <Route path="/contextdemo" element={<ContextDemo/>}/>
+                <Route path="/memoization" element={<Memoization/>}/>
+                <Route path="/callbackdemo" element={<CallbackDemo/>}/>
+                
               <Route path= "*" element={<h1>404 Page Not Found</h1>}/>
               <Route component={NotFound} />  
 

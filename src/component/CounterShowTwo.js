@@ -3,7 +3,8 @@ import { useEffect } from "react";
 
 function CounterShowTwo(props){
  
-//   console.log("New updated value received 123============>",props.counter)
+   console.log("New updated value received in CounterShow 2 ============>",props.counter)
+
  
 // Component Mounted => componentDidMount()
 // Component Update => componentDidUpdate()

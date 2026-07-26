@@ -66,6 +66,22 @@ function Sidebar(props) {
           </NavLink>
        </li>
 
+
+  <li>
+          <NavLink to="/memoization">
+            Memoization Demo
+          </NavLink>
+       </li>
+
+
+       
+
+  <li>
+          <NavLink to="/callbackdemo">
+            callback Demo
+          </NavLink>
+       </li>
+
          
       </ul>
     </aside>

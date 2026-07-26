@@ -29,12 +29,17 @@ function Counter() {
 
 
   const increment = (value) => {
+
+    console.log("Increment function Re-created ============>")
    
    setCount(mycounter + value);
    
   };
 
-  const decrement = (value) => {   
+  const decrement = (value) => {
+       
+        console.log("decrement function Re-created ============>")
+
     setCount(mycounter - value);
   };
 
