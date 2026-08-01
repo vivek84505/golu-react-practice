@@ -4,8 +4,7 @@ import Content from "./component/Content";
 import Footer from "./component/Footer";
 import Welcome from "./component/Welcome";
 import Dashboard from "./component/pages/Dashboard";
- 
-
+import UseReducerDemo from "./component/pages/UseReducerDemo";
 import { headerTitle, sidebarTitle,footerTitle} from "./component/title";
 import { Routes,Route } from "react-router-dom"; 
 
@@ -61,6 +60,7 @@ function App() {
                <Route path="/contextdemo" element={<ContextDemo/>}/>
                 <Route path="/memoization" element={<Memoization/>}/>
                 <Route path="/callbackdemo" element={<CallbackDemo/>}/>
+                 <Route path="/usereducerdemo" element={<UseReducerDemo/>}/>
                 
               <Route path= "*" element={<h1>404 Page Not Found</h1>}/>
               <Route component={NotFound} />  

@@ -1,14 +1,11 @@
 import Counter from "./Counter";
-import { useEffect } from "react";
+import { forwardRef, useEffect } from "react";
 
-function CounterShow(props){
+const CounterShow = forwardRef((props,ref) => {
  
    console.log("New updated value received in CounterShow ============>",props.counter)
  
-// Component Mounted => componentDidMount()
-// Component Update => componentDidUpdate()
-  // Component Will Unmount => componentWillUnmount()
-  // if your depdendency array is empty then useEffect will only run once when the component is mounted
+ 
 
   useEffect(() => {
 
@@ -26,9 +23,11 @@ function CounterShow(props){
     return(
         <div>
             <h2 className="counter-value"> Counter from Show 1 : {props.counter}</h2>
+
+            <input type="text" ref={ref} />
             
         </div>
     )
-}
+});
 
 export default CounterShow;

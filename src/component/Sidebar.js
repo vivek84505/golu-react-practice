@@ -74,6 +74,13 @@ function Sidebar(props) {
        </li>
 
 
+  <li>
+          <NavLink to="/usereducerdemo">
+            useReducerDemo
+          </NavLink>
+       </li>
+
+
        
 
   <li>

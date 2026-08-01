@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CounterShow from "./CounterShow";
 import CounterShowTwo from "./CounterShowTwo";
 import CounterShowThree from "./CounterShowThree";
@@ -11,21 +11,8 @@ function Counter() {
  
   const [mycounter, setCount] = useState(0);
 
-  // useState ==> State variable declaration, initialization method mapping.
-
-  //Hook
-  // Hook is an inbuild function provided by React to achieve a certain task
-  // Each hook has its own method and pattern
-  // Each hook is places as per the usage
-
-  // let mycounter = 777
-
- // Reload => Intitial value set.
-
- // Render => Maintain state value.
-
-
-  
+  const inputRef = useRef() 
+ 
 
 
   const increment = (value) => {
@@ -43,14 +30,20 @@ function Counter() {
     setCount(mycounter - value);
   };
 
+  const handleClick = () => {
+     
+  if (inputRef.current) {
+      inputRef.current.focus(); 
+    }
+  }
  
   
   return (
     <div className="counter-container">
-      <CounterShow counter={mycounter} />     
+      <CounterShow counter={mycounter} ref={inputRef} />     
        <CounterShowTwo counter={mycounter} />     
         <CounterShowThree counter={mycounter} />     
-        
+        <button onClick={handleClick}>Focus Child Input</button>
       <CounterAction  incrementCounter={increment} decrementCounter={decrement} />
       {(mycounter >= 18) ? (<h2>Adult</h2>) : (<h2>TeenAger</h2>)}
       { mycounter % 2 === 0 ? (<h2>Even</h2>) : (<h2>Odd</h2>) }

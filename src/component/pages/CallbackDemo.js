@@ -1,13 +1,16 @@
-import { useCallback, useState } from "react"
+import { useCallback, useRef, useState } from "react"
 import CallbackChild from "./CallbackChild"
 
 
 
 function CallbackDemo(){
 
+       
+      const inputRef = useRef()
+
       const [count,setCount] = useState(0)
  
-      const [name,setName] = useState('vivek')
+      const [name,setName] = useState('')
 
       const changeName = useCallback(() => {
 
@@ -21,7 +24,12 @@ function CallbackDemo(){
 
       //first iteration  current value ===> vivek     New value ===>Vivek Deshpande
       //second iteration  current value ===> Vivek Deshpande     New value ===>Vivek Deshpande
-        
+     
+      const handleClick = () =>{
+        console.log('inputRef =======>',inputRef)
+        // inputRef.current.focus()
+        inputRef.current.innerHTML = 10
+      }
 
 
     return(
@@ -34,6 +42,16 @@ function CallbackDemo(){
             </button>
 
             <CallbackChild name={name} changeName={changeName}/>
+            <br/>
+           
+            <input type="text" value={name}  id="name"  className="name"  ref={inputRef}  />
+ <br/>
+           
+         
+
+            <br/>
+            <br/>
+            <button className="btn btn-primary"  onClick={handleClick}>Focus Input</button>
 
         </div>
     )
