@@ -43,6 +43,12 @@ function Sidebar(props) {
             </NavLink>
         </li>
 
+          <li>
+            <NavLink to="/apigetdemo">
+              API Get Demo
+            </NavLink>
+        </li>
+
          <li>
             <NavLink to="/user">
               User

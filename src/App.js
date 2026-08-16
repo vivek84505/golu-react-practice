@@ -24,6 +24,7 @@ import HookDemo from "./component/pages/HookDemo";
 import ContextDemo from "./component/pages/ContextDemo";
 import Memoization from "./component/pages/Memoization";
 import CallbackDemo from "./component/pages/CallbackDemo";
+import APIGetDemo from "./component/pages/APIGetDemo";
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
               <Route path="/reports" element={<Reports/>}/>
               <Route path="/services" element={<Services/>}/>
               <Route path="/counter" element={<Counter/>}/>
+               <Route path="/apigetdemo" element={<APIGetDemo/>}/>
               <Route path="/user" element={<UserForm/>}/>
               <Route path="/userlist" element={<UserList/>}/>
               <Route path="/userdetails/:id" element={<UserDetails/>}/>

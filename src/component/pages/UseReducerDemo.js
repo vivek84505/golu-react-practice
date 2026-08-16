@@ -1,6 +1,13 @@
  
 
-
+// usestate
+// useReducer => State management
+// useeffect => side effect
+// usecallback
+// usememo => optimization
+// useRef => Reference
+// useContext => Context Management
+// Custom Hook => Code Reusablity
 
 
 import React, { useReducer } from 'react';

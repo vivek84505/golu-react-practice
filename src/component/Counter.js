@@ -12,21 +12,12 @@ function Counter() {
   const [mycounter, setCount] = useState(0);
 
   const inputRef = useRef() 
- 
-
-
-  const increment = (value) => {
-
-    console.log("Increment function Re-created ============>")
-   
-   setCount(mycounter + value);
-   
+  
+  const increment = (value) => {     
+    setCount(mycounter + value);   
   };
 
-  const decrement = (value) => {
-       
-        console.log("decrement function Re-created ============>")
-
+  const decrement = (value) => { 
     setCount(mycounter - value);
   };
 
