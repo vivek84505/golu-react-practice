@@ -25,6 +25,7 @@ import ContextDemo from "./component/pages/ContextDemo";
 import Memoization from "./component/pages/Memoization";
 import CallbackDemo from "./component/pages/CallbackDemo";
 import APIGetDemo from "./component/pages/APIGetDemo";
+import Employee from "./component/Employee";
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
               <Route path="/counter" element={<Counter/>}/>
                <Route path="/apigetdemo" element={<APIGetDemo/>}/>
               <Route path="/user" element={<UserForm/>}/>
+              <Route path="/employee" element={<Employee/>}/>
               <Route path="/userlist" element={<UserList/>}/>
               <Route path="/userdetails/:id" element={<UserDetails/>}/>
               <Route path="/hookdemo" element={<HookDemo/>}/>

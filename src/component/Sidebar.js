@@ -11,6 +11,11 @@ function Sidebar(props) {
               Dashboard
           </NavLink> 
         </li>
+        <li>
+            <NavLink to="/employee">
+              Employee CRUD
+            </NavLink>
+        </li>
 
          <li>
             <NavLink to="/careers">
