@@ -12,10 +12,15 @@ function Employee() {
   const [employees,setEmployees] = useState([])  
 
   const [formData,setFormData] = useState({
-    id:"",
-    name:"",
-    email:"",
-    mobile:""
+    employee_code: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    designation: "",
+    department: "",
+    date_of_joining:"", 
+    salary: ""  
   })   // State variable
 
   const [errors,setErros] = useState({}) // State variable
@@ -54,10 +59,36 @@ function Employee() {
 
 
         // validatiing form elements using formdaData
-        if(!formData.name.trim()){
-            newErros.name = "Name is required"
+        if(!formData.employee_code.trim()){
+            newErros.employee_code = "employee code is required"
         }
+
+
+        if(!formData.first_name.trim()){
+        newErros.first_name = "first_name code is required"
+        }
+
+        if(!formData.last_name.trim()){
+        newErros.last_name = "last_name code is required"
+        }
+
+        if(!formData.designation.trim()){
+        newErros.designation = "designation code is required"
+        }
+
         
+        if(!formData.department.trim()){
+        newErros.department = "department code is required"
+        }
+
+        if(!formData.salary.trim()){
+        newErros.salary = "salary code is required"
+        }
+
+
+
+
+
         // here we are checking if value is blank or not + we need to check if the value is valid Email or not
         let emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
         
@@ -73,11 +104,11 @@ function Employee() {
         //let mobileRegExp = ^[789]\d{9}$
 
         let mobileRegExp = /^(\+91|\+91\-|0)?[789]\d{9}$/
-        if(!formData.mobile.trim()){
-            newErros.mobile = "Mobile is required"
+        if(!formData.phone.trim()){
+            newErros.phone = "Mobile is required"
         }
-        else if(!mobileRegExp.test(formData.mobile)){
-            newErros.mobile = "Invalid Mobile"
+        else if(!mobileRegExp.test(formData.phone)){
+            newErros.phone = "Invalid phone"
         }
 
         console.log("newErros after=======>",newErros)
@@ -91,15 +122,35 @@ function Employee() {
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     
      e.preventDefault();
      
      if(validateForm()){ 
        // setSubmittedData(formData)
-        console.log("Form Validated Submitting data to API=======>",formData)
-        formData.id = Math.floor(Math.random()  * 100) + 1
-        setEmployees([...employees,formData])
+        console.log("Employee submitted formdata=======>",formData)
+        // formData.id = Math.floor(Math.random()  * 100) + 1
+
+          //  const response = await api.post("/posts",{
+          //           userId: Number(formData.userId),    
+          //           title:  formData.title,
+          //           body: formData.body
+          //       });
+
+          const response = await api.post("/api/employees",formData)
+
+          if( response.status === 201 ){
+              alert('Employee Added sucessfully')     
+              getEmployees()    
+          }  
+          else{
+             alert('Something went wrong!')
+          }
+
+        // setEmployees([...employees,formData])
+
+
+        
      }
      else{
         //setSubmittedData(null)
@@ -118,30 +169,64 @@ function Employee() {
  
   return (
     <div className="container mt-4">
-      <h2>User Form</h2>
+      <h2>Employee Form</h2>
  
 
       <form method="POST"  onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-md-4">
             <div className="form-group mb-3">
-              <label htmlFor="name">Full Name</label>
+              <label htmlFor="name">Employee Name</label>
               <input
                 type="text"
                 className="form-control"
-                id="name"
-                name="name"
-                placeholder="Enter Full Name"
-                value={formData.name}
+                id="employee_code"
+                
+                name="employee_code"
+                placeholder="Employee code"
+                value={formData.employee_code}
                 onChange={handleChange}
               />
-              <small className="text-danger">{errors.name}</small>
+              <small className="text-danger">{errors.employee_code}</small>
             </div>
           </div>
 
           <div className="col-md-4">
             <div className="form-group mb-3">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="first_name">first name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="first_name"
+                placeholder="Enter Email"
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+              />
+               <small className="text-danger">{errors.first_name}</small>
+            </div>
+          </div>
+
+
+          <div className="col-md-4">
+            <div className="form-group mb-3">
+              <label htmlFor="last_name">Last name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="last_name"
+                placeholder="Enter Email"
+                name="last_name"
+                value={formData.last_name}
+                onChange={handleChange}
+              />
+               <small className="text-danger">{errors.last_name}</small>
+            </div>
+          </div>
+
+           <div className="col-md-4">
+            <div className="form-group mb-3">
+              <label htmlFor="email">email</label>
               <input
                 type="email"
                 className="form-control"
@@ -157,19 +242,89 @@ function Employee() {
 
           <div className="col-md-4">
             <div className="form-group mb-3">
-              <label htmlFor="mobile">Mobile</label>
+              <label htmlFor="phone">Phone</label>
               <input
                 type="text"
                 className="form-control"
-                id="mobile"
+                id="phone"
                 placeholder="Enter Mobile Number"
-                name="mobile"
-                value={formData.mobile}
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
               />
-               <small className="text-danger">{errors.mobile}</small>
+               <small className="text-danger">{errors.phone}</small>
             </div>
           </div>
+
+        <div className="col-md-4">
+            <div className="form-group mb-3">
+              <label htmlFor="designation">designation</label>
+              <input
+                type="text"
+                className="form-control"
+                id="designation"
+                placeholder="Enter designation"
+                name="designation"
+                value={formData.designation}
+                onChange={handleChange}
+              />
+               <small className="text-danger">{errors.designation}</small>
+            </div>
+
+            </div>
+        
+ <div className="col-md-4">
+             <div className="form-group mb-3">
+              <label htmlFor="department">department</label>
+              <input
+                type="text"
+                className="form-control"
+                id="department"
+                placeholder="Enter department"
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+              />
+               <small className="text-danger">{errors.department}</small>
+            </div>
+</div>
+
+
+ <div className="col-md-4">
+             <div className="form-group mb-3">
+              <label htmlFor="salary">salary</label>
+              <input
+                type="text"
+                className="form-control"
+                id="salary"
+                placeholder="Enter salary"
+                name="salary"
+                value={formData.salary}
+                onChange={handleChange}
+              />
+               <small className="text-danger">{errors.salary}</small>
+            </div>
+          </div>
+
+          
+ <div className="col-md-4">
+             <div className="form-group mb-3">
+              <label htmlFor="salary">date_of_joining</label>
+              <input
+                type="date"
+                className="form-control"
+                id="date_of_joining"
+                placeholder="Enter date_of_joining"
+                name="date_of_joining"
+                value={formData.date_of_joining}
+                onChange={handleChange}
+              />
+               <small className="text-danger">{errors.date_of_joining}</small>
+            </div>
+          </div>
+
+
+
         </div>
 
         <button type="submit" className="btn btn-primary">
