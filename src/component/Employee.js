@@ -36,7 +36,16 @@ function Employee() {
 
     const response = await api.get("/api/employees")
     console.log("Get API response======>",response)
-    setEmployees(response.data)
+
+    if(response?.data?.data?.length > 0){
+
+         setEmployees(response?.data?.data)
+    }
+    else {
+        alert(response.data.message)
+    }
+    
+   
 
   }
 
@@ -128,22 +137,17 @@ function Employee() {
      
      if(validateForm()){ 
        // setSubmittedData(formData)
-        console.log("Employee submitted formdata=======>",formData)
-        // formData.id = Math.floor(Math.random()  * 100) + 1
-
-          //  const response = await api.post("/posts",{
-          //           userId: Number(formData.userId),    
-          //           title:  formData.title,
-          //           body: formData.body
-          //       });
-
+        console.log("Employee submitted formdata=======>",formData) 
+          
           const response = await api.post("/api/employees",formData)
+          
+          console.log("Add Employee API Response =======>",response) 
 
-          if( response.status === 201 ){
+          if( response?.data?.status === "sucessfull" ){
               alert('Employee Added sucessfully')     
               getEmployees()    
           }  
-          else{
+          else if( response?.data?.status === "fail" ){
              alert('Something went wrong!')
           }
 
