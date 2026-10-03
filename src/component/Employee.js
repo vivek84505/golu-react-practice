@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "./services/api";
-
+import "bootstrap/dist/css/bootstrap.min.css"; 
+import * as bootstrap from "bootstrap"
 
 function Employee() {
 
@@ -25,17 +26,19 @@ function Employee() {
 
   const [errors,setErros] = useState({}) // State variable
   const [submittedData,setSubmittedData] = useState(null)  // State variable  
-  
+  const [editEmployeeId,setEditingEmployeeId] = useState(null)
+
   useEffect(()=>{
      getEmployees();
   },[])
 
-   
+   console.log("current editEmployeeId ========>",editEmployeeId)
 
   const getEmployees = async () => {
 
     const response = await api.get("/api/employees")
     console.log("Get API response======>",response)
+    
 
     if(response?.data?.data?.length > 0){
 
@@ -161,13 +164,40 @@ function Employee() {
      }
     
 
-     
-   
-
-    // Goint to call API once the form is validated
-         //console.log("Form Validated Submitting data to API=======>")
+      
   }
  
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    
+  }
+
+  const handleEdit = (employee) => {
+    console.log("Employee to Edit:",employee)
+
+    setEditingEmployeeId(employee.employee_id)
+
+    setFormData({
+      employee_code: employee.employee_code || "",
+      first_name: employee.first_name || "",
+      last_name: employee.last_name || "",
+      email: employee.email || "",
+      phone: employee.phone || "",
+      designation: employee.designation || "",
+      department:  employee.department || "",
+      date_of_joining: employee.date_of_joining || "",
+      salary: employee.salary || "",
+    })   // State variable
+
+    setErros({})
+
+    const modelElement = document.getElementById("editEmployeeModal")
+    const modal = new bootstrap.Modal(modelElement)
+    modal.show();
+
+  }
+
 
 //   console.log("formData========>",formData)
  
@@ -367,6 +397,7 @@ function Employee() {
                     <th scope="col">Phone</th>
                     <th scope="col">Designation</th>
                     <th scope="col">Department</th>
+                    <th scope="col">Action</th>
                      
                     </tr>
                 </thead>
@@ -380,12 +411,305 @@ function Employee() {
                                  <td>{employee.phone}</td>
                                    <td>{employee.designation}</td>
                                     <td>{employee.department}</td>
-                                 
+                                    <td><button onClick={() => handleEdit(employee)} className="btn btn-primary">Edit</button></td>
                             </tr>
                     ))} 
 
                 </tbody>
                 </table>
+
+
+                {/* Employee Edit Modal Start */}
+                
+                
+{/* Edit Employee Modal */}
+
+<div
+    className="modal fade"
+    id="editEmployeeModal"
+    tabIndex="-1"
+    aria-labelledby="editEmployeeModalLabel"
+    aria-hidden="true"
+>
+    <div className="modal-dialog modal-lg">
+        <div className="modal-content">
+
+            <div className="modal-header">
+                <h5
+                    className="modal-title"
+                    id="editEmployeeModalLabel"
+                >
+                    Edit Employee
+                </h5>
+
+                <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+
+            <div className="modal-body">
+
+                <form  method="POST"  onSubmit={handleUpdate}>
+
+                    <div className="row">
+
+                        {/* Employee Code */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Employee Code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="employee_code"
+                                    value={formData.employee_code}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.employee_code}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* First Name */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    First Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="first_name"
+                                    value={formData.first_name}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.first_name}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Last Name */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Last Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="last_name"
+                                    value={formData.last_name}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.last_name}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Email */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.email}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Phone */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Phone
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.phone}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Designation */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Designation
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="designation"
+                                    value={formData.designation}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.designation}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Department */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Department
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="department"
+                                    value={formData.department}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.department}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Salary */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Salary
+                                </label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="salary"
+                                    value={formData.salary}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.salary}
+                                </small>
+
+                            </div>
+                        </div>
+
+
+                        {/* Date of Joining */}
+
+                        <div className="col-md-6">
+                            <div className="mb-3">
+
+                                <label className="form-label">
+                                    Date of Joining
+                                </label>
+
+                                <input
+                                    type="date"
+                                    className="form-control"
+                                    name="date_of_joining"
+                                    value={formData.date_of_joining}
+                                    onChange={handleChange}
+                                />
+
+                                <small className="text-danger">
+                                    {errors.date_of_joining}
+                                </small>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="modal-footer">
+
+                        <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                        >
+                            Update Employee
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                {/* Employee Edit Modal End */}
 
         </div>
     </div>
