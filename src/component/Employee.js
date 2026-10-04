@@ -168,7 +168,42 @@ function Employee() {
   }
  
   const handleUpdate = async (e) => {
+
     e.preventDefault();
+
+    if(!validateForm()){
+        alert("Something went wrong")
+    }
+    
+
+    try {
+
+        console.log("Update Employee Data", formData)
+
+        const response = await api.put(`/api/employees/${editEmployeeId}`,formData);
+       
+        console.log("Put API Response",response)
+
+        if(response?.data?.status === "sucessfull"){
+            alert("Employee Updated Sucesfully")
+             getEmployees()
+
+            const modelElement = document.getElementById("editEmployeeModal")
+            const modal = bootstrap.Modal.getInstance(modelElement)
+            if(modal){
+                modal.hide()
+            }
+
+        }
+        else{
+
+        }
+
+    }
+    catch(error){
+        alert("Something went wrong!")
+    }
+
 
     
   }
