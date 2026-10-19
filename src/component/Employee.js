@@ -234,6 +234,32 @@ function Employee() {
   }
 
 
+  const handleDelete = async (employee) => {
+    console.log("Employee to Delete:",employee)
+
+   let  c = window.confirm("Are you sure you want to delete this record ?")
+
+    if(c){
+
+        const {employee_id}  = employee;
+ 
+         const response = await api.delete(`/api/employees/${employee_id}`)
+         
+         if(response.data.status == "sucessfull" ){
+            alert(response.data.message)
+             getEmployees();
+         }
+         else{
+            alert(response.data.message)
+         }
+    }
+    
+
+     
+ 
+
+  }
+
 //   console.log("formData========>",formData)
  
   return (
@@ -446,7 +472,10 @@ function Employee() {
                                  <td>{employee.phone}</td>
                                    <td>{employee.designation}</td>
                                     <td>{employee.department}</td>
-                                    <td><button onClick={() => handleEdit(employee)} className="btn btn-primary">Edit</button></td>
+                                    <td><button onClick={() => handleEdit(employee)} className="btn btn-primary">Edit</button>
+                                    <button onClick={() => handleDelete(employee)} className="btn btn-danger">Delete</button>
+                                    </td>
+                                    
                             </tr>
                     ))} 
 
